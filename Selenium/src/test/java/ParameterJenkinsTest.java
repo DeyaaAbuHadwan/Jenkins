@@ -14,7 +14,8 @@ public class ParameterJenkinsTest {
 		prop.load(readFile);
 		String userName = prop.getProperty("username");
 		String pw = prop.getProperty("pw");
-		Assert.assertEquals(userName, "rasha");
+		System.out.println("User Name:"+ userName);
+		Assert.assertEquals(userName, "Deyaa");
 	}
 
 }
