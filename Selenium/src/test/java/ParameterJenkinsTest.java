@@ -16,6 +16,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import DriverClasses.DriverChrome;
+import io.qameta.allure.Allure;
 
 public class ParameterJenkinsTest {
 
@@ -32,17 +33,12 @@ public class ParameterJenkinsTest {
 		waitElement(By.name("login"), 20, driver.getDriver()).sendKeys(userName);
 		waitElement(By.name("password"), 20, driver.getDriver()).sendKeys(pw);
 		waitElement(By.name("commit"), 20, driver.getDriver()).click();
-
+		// Screenshot
 		TakesScreenshot scrShot = ((TakesScreenshot) driver.getDriver());
-
-		// Call getScreenshotAs method to create image file
-
 		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
-
-		// Move image file to new destination
-
 		File DestFile = new File("img.png");
 		FileUtils.copyFile(SrcFile, DestFile);
+		Allure.addAttachment("ScreenShot", FileUtils.openInputStream(SrcFile));
 
 		// Copy file at destination
 
